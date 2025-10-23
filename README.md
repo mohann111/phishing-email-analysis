@@ -1,105 +1,115 @@
-#Phishing Email Analysis
-Project Overview
-Phishing is a deceptive technique used to steal sensitive data using digital platforms such as email, SMS, phone calls, and web links. Attackers craft social engineering tactics to trick victims into revealing credentials or downloading malicious content. This project analyzes phishing emails through hands-on methodology, technical tools, and standard procedures.​
+# Phishing Email Analysis
 
-Types of Phishing
-Information Gathering: Collects user data for future attacks.​
+## Overview
 
-Credential Harvesting: Steals usernames, passwords, and account data.​
+Phishing is a cyberattack technique used to trick users into revealing sensitive data through digital channels such as email, SMS, phone calls, and websites. Attackers employ various social engineering tactics to steal credentials, deliver malware, or obtain private information. This project demonstrates practical analysis of phishing emails using common cybersecurity tools and clearly defined workflows.
 
-Malware Delivery: Disguises malicious files as legitimate attachments.​
+***
 
-Spear Phishing: Targets specific individuals with personalized lures.​
+## Types of Phishing
 
-Whaling: Focuses attacks on high-profile victims like executives.​
+- **Information Gathering:** Collects user data for future attacks.
+- **Credential Harvesting:** Steals usernames, passwords, or other account information.
+- **Malware Delivery:** Disguises malicious files as legitimate attachments.
+- **Spear Phishing:** Targets specific individuals with tailored messages.
+- **Whaling:** Focuses on executives or high-profile individuals.
+- **Vishing:** Uses phone calls to obtain information.
+- **Smishing & Quishing:** Employs SMS or QR codes for deception.
 
-Vishing: Uses phone calls to collect private information.​
+***
 
-Smishing & Quishing: Employs SMS and QR codes to deceive users.​
+## Project Workflow
 
-Project Workflow
-1. Environment Setup
-Email Client: Install and configure Thunderbird for email retrieval.​
+### Environment Setup
 
-Text Editor: Install Sublime Text for manual header and content inspection.​
+- **Email Client:** Install and configure Thunderbird for collecting phishing emails.
+- **Text Editor:** Install Sublime Text for inspecting email headers and content.
 
-2. Email Header Analysis
-Open emails in Sublime Text for raw header review.
+### Email Header Analysis
 
-Simplify or highlight headers using the 13Cubed tool via Package Control in Sublime Text (Ctrl+Shift+P, search "Email Headers").​
+1. Open emails in Sublime Text to view raw headers.
+2. Use the 13Cubed Email Headers package (via Package Control) to highlight and simplify headers.
+3. Reference IANA's standard email headers for consistency.
+4. Perform sender/IP verification and WHOIS lookups with tools like Domain Tools.
 
-Reference IANA standard email headers for consistency.
+### Authentication Methods
 
-IP Verification and WHOIS lookups through Domain Tools for sender legitimacy.​
+- **SPF (Sender Policy Framework):** Validates sending server via DNS records.
+- **DKIM (DomainKeys Identified Mail):** Ensures content integrity with cryptographic signatures.
+- **DMARC (Domain-based Authentication Reporting):** Adds policy and reporting for email authentication.
+- Analyze all headers using MXToolbox Email Header Analyzer.
 
-3. Authentication Methods
-SPF (Sender Policy Framework): DNS record validation to authenticate sending servers.​
+### Email Content Analysis
 
-DKIM (DomainKeys Identified Mail): Public-key encryption for content integrity.​
+- Review for suspicious spelling/grammar, MIME versions, and encoding fields.
+- Use CyberChef to decode/inspect Base64, HTML, URL, and quoted-printable encodings.
 
-DMARC (Domain-based Authentication Reporting): Ensures safe mail delivery and reporting.​
+### URL Analysis
 
-Test all headers using MXToolbox Email Header Analyzer.
+- Defang suspicious URLs (using CyberChef) before further investigation.
+- Check URLs on:
+  - PhishTank
+  - url2png
+  - urlscan.io
+  - VirusTotal
+  - Google Transparency Report
+  - JoeSandbox
 
-4. Email Content Analysis
-Scan for spelling and grammar mistakes, suspicious MIME versions, and suspicious encodings (content-transfer-encoding, content-type).
+#### Example: Anatomy of a URL
 
-Use CyberChef for decoding: Base64, HTML, URL, quoted-printable.​
-
-5. URL Analysis
-Defang suspect URLs with CyberChef before investigating.
-
-Verify using PhishTank, url2png, urlscan.io, VirusTotal, Google Transparency Report, and JoeSandbox.
-
-Reference image below for URL anatomy:
-<img width="1208" height="470" alt="image" src="https://github.com/user-attachments/assets/de861880-96d4-4a6b-8a5f-d51f462454ed" />
+<img width="1208" height="470" alt="image" src="https://github.com/user-attachments/assets/87fc13f7-1ad0-47ae-98ef-a21cbe55e729" />
 
 
-​
+### Attachment Analysis
 
-6. Attachment Analysis
-Download attachments; use hash commands on Ubuntu (sha256sum, sha1sum, md5sum) or PowerShell on Windows (Get-FileHash).​
+1. Download suspicious files; use hashing tools on Ubuntu (`sha256sum`, `sha1sum`, `md5sum`) or Windows (`Get-FileHash`).
+2. Use scripts (e.g., `eioc.py`) for extracting and analyzing attachments.
+3. Submit computed hashes to:
+   - VirusTotal
+   - Cisco Talos
+   - Hybrid Analysis
+   - JoeSandbox
+   - AnyRun  
+   *(Only use public tools for non-sensitive files.)*
 
-Use scripts (e.g., eioc.py) for advanced file analysis.
+### IOC (Indicators of Compromise) Extraction
 
-Paste computed hashes into VirusTotal, Cisco Talos, Hybrid Analysis, JoeSandbox, or AnyRun for reputation checking (do not upload sensitive data publicly).
+- Collect sender details, URLs, file hashes, and other relevant indicators.
+- Document findings for reporting and threat intelligence.
 
-7. IOC (Indicators of Compromise) Extraction
-Collect suspicious sender details, URLs, attachment hashes, and other indicators.
+***
 
-Document findings for report generation and threat intelligence sharing.
+## Practice & References
 
-Practice and Reference Links
-PhishTank: Phishing URL repository
+- **PhishTank:** [Phishing URL repository](https://phishtank.com)
+- **VirusTotal:** [File and URL analysis](https://virustotal.com)
+- **Google Transparency Report:** [URL reputation monitoring](https://transparencyreport.google.com)
+- **JoeSandbox, AnyRun, Hybrid Analysis:** Advanced sandbox environments for attachments
 
-VirusTotal: File and URL analysis
+***
 
-Google Transparency Report: URL reputation monitoring
+## How to Run
 
-JoeSandbox, AnyRun, Hybrid Analysis: Advanced sandboxing for email analysis
+1. Follow each step in the Project Workflow above for sample analysis.
+2. Apply listed tools and techniques for comprehensive phishing investigations.
+3. Document observations and IOCs for reporting.
 
-How to Run
-Follow steps in "Project Workflow" above for each sample.
+***
 
-Use listed tools and techniques for analysis.
+## Contributing
 
-Save observations and IOCs in designated output files for sharing or automation.
+Feel free to fork the repository, submit pull requests with improvements, or open issues for discussion and suggestions.
 
-Contributing
-Feel free to fork the repo, submit pull requests for improvements, or report issues and suggestions via GitHub issues.
+***
 
-License
-This project is licensed under MIT License (or select your preferred license).
 
-Acknowledgements
-Inspired by:
+***
 
-13Cubed Email Header Tools
+## Acknowledgements
 
-CyberChef
+- 13Cubed Email Header Tools
+- CyberChef
+- IANA Standard Documentation
+- MXToolbox, VirusTotal, and PhishTank
 
-IANA Standard Documentation
-
-MXToolbox and VirusTotal
-
-PhishTank Practice URL
+***
