@@ -1,0 +1,9 @@
+URL REPORT
+======================================
+
+-open the url CYBERCHEF
+-Add RECIPE and extract the urls
+-DEFANG the urls
+======================================
+
+Analyze the URLS using tools like PHISHTANK or URL2PNG
