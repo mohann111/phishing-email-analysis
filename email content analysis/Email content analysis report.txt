@@ -1,0 +1,17 @@
+Email content analysis
+======================================
+
+sample@1 and sample@2 : email findings
+======================================
+Grammer mistakes :ackword greetings
+                  mispelled words
+                  poor grammer
+
+sample@3 :email findings
+======================================
+-MIME-Version: 1.0
+-Content-Type: text/html; charset=utf-8
+-Content-Transfer-Encoding: quoted-printable
+URLs
+======================================
+"https://tradestar.lt.acemlnc.com/Prod/link-tracker?redirectUrl=aHR0cHMlM0ElMkYlMkZzZWN1cmUtbGVkZ2VybGl2ZS5jb20lMkY=&sig=5Cmvp1GURuNzmDNTdTqxkr3tww1xGx3veocKRi92Nb8d&iat=1704351993&a=||89772694||&account=tradestar.activehosted.com&email=303AA8hFWZdR27KCtfzXviS/fNpy9kGUVnNm4XA3J1bCdW28/KO3:HC4Ma11VAGawlOJbSBfDAPIwKPfFpICh&s=6d7b1963728338ead9026764a7fcbd73&i=5373A6473A276A38676"
