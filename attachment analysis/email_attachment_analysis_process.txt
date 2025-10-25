@@ -1,0 +1,25 @@
+
+# Email Attachment Extraction and Hash Analysis Process
+
+This documentation describes the steps for extracting file attachments from a phishing email using emldump.py, generating a SHA-256 hash, and preparing the file for analysis with VirusTotal.
+
+## Step 1: Extract Email Structure
+Run emldump.py to display MIME parts of the EML file:
+    python3 ../Tools/emldump.py sample1.eml
+Identify the part number of the suspicious attachment.
+
+## Step 2: Extract Attachment
+Extract the selected attachment (e.g., part 4, quotation.iso) with:
+    python3 ../Tools/emldump.py sample1.eml -s 4 -d > quotation.iso
+
+## Step 3: Calculate SHA-256 Hash
+Generate and record the SHA-256 checksum for integrity and malware analysis:
+    sha256sum quotation.iso
+Sample output:
+    75fdb848eac332b4ca7d88f497e7ba7ebbb9a798d825b28cf1f87b9d7149e87f  quotation.iso
+
+## Step 4: Submit for Malware Analysis
+Upload the file or use the SHA-256 hash on VirusTotal to check reputation and analysis results:
+    https://www.virustotal.com/
+
+This process is essential for validating and investigating email-based threats as part of SOC operations.
